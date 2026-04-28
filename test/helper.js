@@ -88,7 +88,7 @@ async function assertContentsMatch(dir, url, branch) {
   const root = await mkdtemp();
   const clone = path.join(root, 'repo');
   const options = {git: 'git', remote: 'origin', depth: 1};
-  const git = await Git.clone([url, url], clone, branch, options);
+  const git = await Git.clone(url, clone, branch, options);
   const comparison = compare(dir, git.cwd, {excludeFilter: '.git'});
   if (comparison.same) {
     return true;
